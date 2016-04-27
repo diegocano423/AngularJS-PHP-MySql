@@ -1,0 +1,25 @@
+{
+  "name": "angularjs-php-mysql",
+  "version": "1.0.0",
+  "description": "Personal practice.",
+  "main": "index.js",
+  "dependencies": {
+    "angular-route": "^1.5.5",
+    "angularjs": "0.0.1",
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegocano423/AngularJs-PHP-MySql.git"
+  },
+  "author": "Diego Cano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegocano423/AngularJs-PHP-MySql/issues"
+  },
+  "homepage": "https://github.com/diegocano423/AngularJs-PHP-MySql#readme"
+}
