@@ -4,8 +4,8 @@
   "description": "Personal practice.",
   "main": "index.js",
   "dependencies": {
+    "angular": "^1.5.5",
     "angular-route": "^1.5.5",
-    "angularjs": "0.0.1",
     "bootstrap": "^3.3.6"
   },
   "devDependencies": {},

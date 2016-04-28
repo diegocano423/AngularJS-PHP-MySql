@@ -1,0 +1,19 @@
+{
+    "name": "diegocano/maintenance",
+    "config": {
+      "vendor-dir": "back-end/vendor"
+    }, 
+    "require": {
+        "slim/slim": "^3.3"
+    },
+    "license": "MIT",
+    "autoload": {
+      "psr-4": {"App\\": "back-end/app/src/"}
+    },
+    "authors": [
+        {
+            "name": "diegocano423",
+            "email": "dcanoc@ucenfotec.ac.cr"
+        }
+    ]
+}
