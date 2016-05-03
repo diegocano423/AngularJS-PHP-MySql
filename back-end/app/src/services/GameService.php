@@ -23,7 +23,8 @@ class GameService {
     					if ($release) {
                             $game_query = "SELECT title FROM games WHERE title = :title LIMIT 1";
                             $params_of_game = [ ":title" => $title ];
-                            $create_query = "INSERT INTO games (title, description, developer, console, release) VALUES (:title, :description, :developer, :console, :release)";
+                            $create_query = "INSERT INTO games (title, description, developer, console, releaseDate) 
+                                             VALUES (:title, :description, :developer, :console, :release)";
                             $create_params = [
                                 ":title" => $title,
                                 ":description" => $description,
@@ -44,7 +45,6 @@ class GameService {
                                     return $result;
                                 }
                             }
-
     					} else {
                             $result["message"] = "Release date is required.";
                             $result["error"] = true;
@@ -68,7 +68,7 @@ class GameService {
         return $result;
     }
 
-    public function edit () {
+    public function edit ($title, $description, $developer, $console, $release) {
         $result = [];
 
         if ($this->valid->validString($title)) {
@@ -76,6 +76,36 @@ class GameService {
                 if ($this->valid->validString($developer)) {
                     if ($this->valid->validString($console)) {
                         if ($release) {
+                            $edit_query = "UPDATE games 
+                                           SET title   = :title, 
+                                           description = :description,
+                                           developer   = :developer,
+                                           console     = :console,
+                                           releaseDate = :release
+                                           WHERE title = :title";
+                            $edit_params = [
+                                ":title"       => $title,
+                                ":description" => $description,
+                                ":developer"   => $developer,
+                                ":console"     => $console,
+                                ":release"     => $release
+                            ];
+                            $result_query = "SELECT * FROM games WHERE title = :title";
+                            $result_params = [ ":title" => $title ];
+                            $result = $this->storage->query($edit_query, $edit_params) ? true : false;
+
+                            if ($result) {
+                                $result = $this->storage->query($result_query, $result_params);
+                                return $result;
+                            } else {
+                                $result = [
+                                    'message' => "We don't have any game by that title",
+                                    'error' => true
+                                ];
+                                return $result;
+                            }
+
+                            return $result;
 
                         } else {
                             $result["message"] = "A new release date field is required for edition.";
@@ -100,8 +130,21 @@ class GameService {
         return $result;
     }
 
-    public function delete () {
+    public function delete ($title) {
+        $result = [];
 
+        if ($title) {
+            $delete_query = "DELETE FROM games WHERE title = :title";
+            $delete_params = [":title" => $title];
+            $result = $this->storage->query($delete_query, $delete_params);
+            return $result['message'] = "Game succesfully deleted.";
+        } else {
+            $result["message"] = "We couldn't delete the game you selected.";
+            $result["error"] = true;
+            return $result;
+        }
+
+        return $result;     
     }
 
     public function getAll () {

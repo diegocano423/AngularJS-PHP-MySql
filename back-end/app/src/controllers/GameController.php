@@ -75,7 +75,7 @@ class GameController {
         return $result;
 	}
 
-    public function edit () {
+    public function edit ($request) {
         $result = [];
         $data = $request->getParsedBody();
         
@@ -140,8 +140,19 @@ class GameController {
         return $result;
     }
 
-    public function delete () {
-
+    public function delete ($request) {
+        $result = [];
+        $title = $request['title'];
+        if (isset($title)) {
+            $result = $this->GameService->delete($title);
+        } else { 
+            $result = [
+                'error' => true,
+                'message' => "We couldn't find the requested game."
+            ];
+        }
+        
+        return $result;
     }
 
     public function getAll () {
@@ -149,6 +160,6 @@ class GameController {
     }
 
     public function getOne () {
-        
+
     }
 }
