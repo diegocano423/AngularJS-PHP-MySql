@@ -1,4 +1,4 @@
-var maintenance = angular.module('maintenance', ['ngRoute'])
+var maintenance = angular.module('maintenance', ['ngRoute', 'maintenance.service'])
 
 maintenance.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -13,3 +13,5 @@ maintenance.config(["$routeProvider", "$locationProvider", function ($routeProvi
       requireBase: false
     });
 }]);
+
+angular.module('maintenance.service', []);
