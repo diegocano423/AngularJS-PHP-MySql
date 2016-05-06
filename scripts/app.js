@@ -13,5 +13,3 @@ maintenance.config(["$routeProvider", "$locationProvider", function ($routeProvi
       requireBase: false
     });
 }]);
-
-angular.module('maintenance.service', []);

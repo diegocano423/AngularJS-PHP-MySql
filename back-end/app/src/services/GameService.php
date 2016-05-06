@@ -42,7 +42,7 @@ class GameService {
                                 } else {
                                     $result = $this->storage->query($create_query, $create_params);
                                     $result = $this->storage->query($game_query, $params_of_game);
-                                    return $result;
+                                    return $result['data'];
                                 }
                             }
     					} else {
@@ -148,10 +148,32 @@ class GameService {
     }
 
     public function getAll () {
+        $result = [];
+        $get_all_query = "SELECT * FROM games LIMIT 10";
+        $params = [];
 
+        $result = $this->storage->query($get_all_query, $params);
+
+        if (count($result['data'] > 0)) {
+            return $result['data'];
+        } else {
+            $result['message'] = "We don't have games at this moment.";
+            $result['data'] = true;
+        }
     }
 
-    public function getOne () {
+    public function getOne ($title) {
+        $result = [];
+        $get_one_query = "SELECT * FROM games WHERE title = :title LIMIT 1";
+        $params = [ ":title" => $title ];
 
+        $result = $this->storage->query($get_one_query, $params);
+
+        if (count($result['data'] > 0)) {
+            return $result['data'];
+        } else {
+            $result['message'] = "We don't have any game by that title.";
+            $result['error'] = true;
+        }
     }
 }

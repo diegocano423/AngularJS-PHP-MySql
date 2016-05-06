@@ -3,8 +3,8 @@
         'node_modules/angular/angular.min.js',
         'node_modules/angular-route/angular-route.min.js',
         'scripts/app.js',
-        'scripts/controllers/games.ctrl.js',
-        'scripts/services/request.srvc.js'
+        'scripts/services/request.srvc.js',
+        'scripts/controllers/games.ctrl.js'
 	];
 ?>
 

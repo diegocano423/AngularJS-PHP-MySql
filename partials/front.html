@@ -12,7 +12,7 @@
 			</div>
 	    	<div class="form-group">
 	    		<label for="gameDev">Developer</label>
-	    		<input type="text" class="form-control" name="gameDev" ng-model="game.dev" required="required">
+	    		<input type="text" class="form-control" name="gameDev" ng-model="game.developer" required="required">
 	    	</div>
 	    	<div class="form-group">
 	    		<label for="gameComsole">Console</label>
@@ -21,6 +21,9 @@
 	    	<div class="form-group">
 	    		<label for="gameRelease">Release Date</label>
 	    		<input type="date" class="form-control" name="gameRelease" ng-model="game.release" required="required">
+	    	</div>
+	    	<div class="form-group" ng-show="error">
+	    		<span class="text-danger"><strong>{{error}}</strong></span>
 	    	</div>
 	    	<div class="form-group">
 	    		<button class="btn btn-success pull-right" ng-click="createGame()">Add</button>

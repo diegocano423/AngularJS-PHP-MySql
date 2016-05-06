@@ -148,7 +148,7 @@ class GameController {
         } else { 
             $result = [
                 'error' => true,
-                'message' => "We couldn't find the requested game."
+                'message' => "We couldn't delete the requested game."
             ];
         }
         
@@ -156,10 +156,24 @@ class GameController {
     }
 
     public function getAll () {
+        $result = $this->GameService->getAll();
 
+        return $result;
     }
 
-    public function getOne () {
+    public function getOne ($request) {
+        $result = [];
+        $title = $request['title'];
 
+        if (isset($title)) {
+            $result = $this->GameService->getOne($title);
+        } else {
+            $result = [ 
+                'error' => true,
+                'message' => "We couldn't find the requested game."
+            ];
+        }
+
+        return $result;
     }
 }

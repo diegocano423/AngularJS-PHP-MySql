@@ -45,4 +45,24 @@ $app->get(
     }
 );
 
+$app->get(
+    '/game/getAll',
+    function ($request, $response) {
+        $gameController = new App\Controllers\GameController();
+
+        $result = $gameController->getAll($request);
+        return $response->withJson($result);
+    }
+);
+
+$app->get(
+    '/game/getOne/{title}',
+    function ($request, $response, $title) {
+        $gameController = new App\Controllers\GameController();
+
+        $result = $gameController->getOne($title);
+        return $response->withJson($result);
+    }
+);
+
 $app->run();
