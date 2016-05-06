@@ -1,5 +1,13 @@
 maintenance.controller('GamesCtrl', ['$scope', 'RequestService', '$location', function ($scope, RequestService, $location) {
 
+    RequestService.getAll().then(function (response) {
+        console.log(response);
+        $scope.games = response;
+        console.log($scope.games);
+    }, function (reject) {
+
+    }); 
+
 	$scope.createGame = function(){
         RequestService.create({
         	title: $scope.game.title,
@@ -8,7 +16,6 @@ maintenance.controller('GamesCtrl', ['$scope', 'RequestService', '$location', fu
         	console: $scope.game.console,
         	release: $scope.game.release
         }, function (response) {
-
             console.log(response);
         	if (response.error) {
         		console.log(response.error);
@@ -19,5 +26,6 @@ maintenance.controller('GamesCtrl', ['$scope', 'RequestService', '$location', fu
         	$scope.error = response.messages;
         });
     };
+
 
 }]);

@@ -158,8 +158,10 @@ class GameService {
             return $result['data'];
         } else {
             $result['message'] = "We don't have games at this moment.";
-            $result['data'] = true;
+            $result['error'] = true;
         }
+
+        return $result;
     }
 
     public function getOne ($title) {
