@@ -60,21 +60,16 @@ angular.module('maintenance.service', [])
 
             },
 
-            getOne: function (){
-
+            getOne: function (title){
+                if(title) {
+                    var route = url + backEnd + 'getOne' + title;
+                    return $http.get(route);
+                }
             },
 
             getAll: function(){
                 var route = url + backEnd + 'getAll';
-                data = {};
-                return $http.get(route, data).then(function(response) {
-                    if (response.error) {
-                        console.debug('get: error');
-                    } else {
-                        console.debug('get: success');
-                        data = response.data;
-                    }
-                }); 
+                return $http.get(route);
             }
         };
 

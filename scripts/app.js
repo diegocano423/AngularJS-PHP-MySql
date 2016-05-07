@@ -7,6 +7,11 @@ maintenance.config(["$routeProvider", "$locationProvider", function ($routeProvi
         controller: "GamesCtrl",
         controllerAs: "games"
     })
+    .when("/practicaa/detail/:title", {
+        templateUrl: "partials/detail.html",
+        controller: "DetailCtrl",
+        controllerAs: "detail"
+    })
 
     $locationProvider.html5Mode({
       enabled: true,

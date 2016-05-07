@@ -1,12 +1,12 @@
-maintenance.controller('GamesCtrl', ['$scope', 'RequestService', '$location', function ($scope, RequestService, $location) {
+maintenance.controller('GamesCtrl', ['$scope', 'RequestService', '$location', '$routeParams', function ($scope, RequestService, $location, $routeParams) {
 
     RequestService.getAll().then(function (response) {
-        console.log(response);
-        $scope.games = response;
+        $scope.games = response.data;
         console.log($scope.games);
+        
     }, function (reject) {
 
-    }); 
+    });
 
 	$scope.createGame = function(){
         RequestService.create({

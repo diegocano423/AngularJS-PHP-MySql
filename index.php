@@ -4,7 +4,8 @@
         'node_modules/angular-route/angular-route.min.js',
         'scripts/app.js',
         'scripts/services/request.srvc.js',
-        'scripts/controllers/games.ctrl.js'
+        'scripts/controllers/games.ctrl.js',
+        'scripts/controllers/detail.ctrl.js'
 	];
 ?>
 
