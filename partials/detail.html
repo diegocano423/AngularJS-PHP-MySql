@@ -1,3 +1,47 @@
 <div class="col-md-12 col-xs-12">
-	<h2>Details</h2>
+	<h2>{{singleGame.title}} Details</h2>
+	<div class="col-md-6 col-xs-6">
+	    <article>
+		    <h3><label for="">Console</label></h3>
+		    <p>{{singleGame.console}}</p>
+		    <h3><label for="">Developer</label></h3>
+		    <p>{{singleGame.developer}}</p>
+		    <h3><label for="">Description</label></h3>
+		    <p>{{singleGame.description}}</p>
+		</article>
+		<a role="button" class="btn btn-success" ng-href="./">Return</a>
+		<button class="btn btn-primary" ng-click="startEdition()">Edit Game</button>
+		<button class="btn btn-danger" ng-click="deleteGame()">Delete Game</button>
+	</div>
+	<div class="col-md-6 col-xs-6" ng-show="editForm">
+		<h3>Edit Form</h3>
+        <form novalidate="novalidate" name="edit">
+			<div class="form-group">
+				<label for="gameTitle">Game Title</label>
+				<input type="text" class="form-control" name="gameTitle" ng-model="singleGame.title" ng-disabled="1">
+			</div>
+			<div class="form-group">
+				<label for="gameDescription">Game Description</label>
+				<input type="text" class="form-control" name="gameDescription" ng-model="singleGame.description" required="required">
+			</div>
+	    	<div class="form-group">
+	    		<label for="gameDev">Developer</label>
+	    		<input type="text" class="form-control" name="gameDev" ng-model="singleGame.developer" required="required">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="gameComsole">Console</label>
+	    		<input type="text" class="form-control" name="gameConsole" ng-model="singleGame.console" required="required">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="gameRelease">Release Date</label>
+	    		<input type="date" class="form-control" name="gameRelease" ng-model="singleGame.release" required="required">
+	    	</div>
+	    	<div class="form-group" ng-show="error">
+	    		<span class="text-danger"><strong>{{error}}</strong></span>
+	    	</div>
+	    	<div class="form-group">
+	    		<button class="btn btn-success pull-right" ng-click="editGame()">Edit</button>
+	    	</div>
+		</form>
+	</div>
 </div>

@@ -38,8 +38,8 @@
 			    <th>Game Developer</th>
 			    <th>Game Console</th>
             </tr>
-            <tr ng-repeat="game in games">
-            	<td><a ng-href="/practicaa/detail/{{game.title}}">{{game.title}}</a></td>
+            <tr ng-repeat="game in games track by $index">
+            	<td><a ng-href="./practicaa/detail/{{game.title}}">{{game.title}}</a></td>
             	<td>{{game.developer}}</td>
             	<td>{{game.console}}</td>
             </tr>

@@ -96,7 +96,7 @@ class GameService {
 
                             if ($result) {
                                 $result = $this->storage->query($result_query, $result_params);
-                                return $result;
+                                return $result['data'];
                             } else {
                                 $result = [
                                     'message' => "We don't have any game by that title",

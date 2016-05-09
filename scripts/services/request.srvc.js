@@ -56,13 +56,16 @@ angular.module('maintenance.service', [])
                 }
             },
 
-            delete: function (){
-
+            delete: function (title){
+                if (title) {
+                    var route = url + backEnd + 'delete/' + title;
+                    return $http.get(route);
+                }
             },
 
             getOne: function (title){
                 if(title) {
-                    var route = url + backEnd + 'getOne' + title;
+                    var route = url + backEnd + 'getOne/' + title;
                     return $http.get(route);
                 }
             },

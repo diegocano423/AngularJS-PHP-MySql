@@ -26,6 +26,4 @@ maintenance.controller('GamesCtrl', ['$scope', 'RequestService', '$location', '$
         	$scope.error = response.messages;
         });
     };
-
-
 }]);
